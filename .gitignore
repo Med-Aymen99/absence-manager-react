@@ -1,0 +1,26 @@
+# Dependency directories
+node_modules
+
+# Environment variables
+.env
+
+# Logs
+logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Production build
+dist
+
+# IDE specific files
+.idea
+.vscode
+
+# Environment variables file for development (if used)
+.env.local
+
+# Config files that may include sensitive information
+config.js
