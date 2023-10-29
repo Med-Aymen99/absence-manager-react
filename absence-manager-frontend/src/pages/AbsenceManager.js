@@ -4,20 +4,31 @@ import AbsenceItem from '../components/AbsenceItem';
 import utils from '../utils/helperFunctions';
 
 export default function AbsenceManager() {
+
     const [membersData, setMembersData] = useState([]);
     const [absencesData, setAbsencesData] = useState([]);
- 
-    useEffect(() => {
-        getAbsences()
-            .then(data => setAbsencesData(data) )
-            .catch(error => console.log(error))
-            
-        getMembers()
-            .then(data => setMembersData(data))
-            .catch(error => console.log(error))
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    }, [])
+    console.log("loading ?", isLoading)
+
+    const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+    useEffect(() => {
+        Promise.all([getAbsences(), getMembers()])
+            .then(([absencesData, membersData]) => {
+                setAbsencesData(absencesData);
+                setMembersData(membersData);
+                //setAbsencesData([])
+            })
+            .catch(error => setError(error))
+            .finally(async () => {
+                await sleep(2000)
+                setIsLoading(false);
+            });
+    }, []);
     
+
     const AbsenceItems = absencesData.map(item => {
         return <AbsenceItem 
             key = {item.id}
@@ -30,6 +41,15 @@ export default function AbsenceManager() {
         />
     })
 
+    if (isLoading) 
+        return <div>Loading absences...</div> 
+
+    if (error) 
+        return  <div>Error: {error.message}</div>
+
+    if (absencesData.length === 0) 
+        return <div>No absences found</div>;
+      
     return(
         <div>
             <h1>Absence Manager</h1>
