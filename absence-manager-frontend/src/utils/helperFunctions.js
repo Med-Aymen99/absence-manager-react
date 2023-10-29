@@ -16,7 +16,6 @@ const utils = {
     },
 
     getMemberName(userId, membersData) {
-        console.log("membersData :" ,membersData)
         const member = membersData.find(item => item.userId === userId)
         return member.name
     }

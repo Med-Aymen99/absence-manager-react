@@ -5,21 +5,23 @@ import utils from '../utils/helperFunctions';
 
 export default function AbsenceManager() {
 
-    const [membersData, setMembersData] = useState([]);
+    const [members, setMembers] = useState({});
     const [absencesData, setAbsencesData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    console.log("loading ?", isLoading)
-
     const sleep = ms => new Promise(r => setTimeout(r, ms));
-
+    
     useEffect(() => {
+        console.log("useEffect")
         Promise.all([getAbsences(), getMembers()])
             .then(([absencesData, membersData]) => {
                 setAbsencesData(absencesData);
-                setMembersData(membersData);
-                //setAbsencesData([])
+                setMembers(oldMembers => {
+                    const members = {}
+                    membersData.forEach(member => members[member.userId] = member.name)
+                    return members
+                });
             })
             .catch(error => setError(error))
             .finally(async () => {
@@ -29,10 +31,10 @@ export default function AbsenceManager() {
     }, []);
     
 
-    const AbsenceItems = absencesData.map(item => {
+    const AbsenceItems = () => absencesData.map(item => {
         return <AbsenceItem 
             key = {item.id}
-            name = {utils.getMemberName(item.userId, membersData)}
+            name = {members[item.userId]}
             type = {item.type}
             period = {utils.getPeriod(item.startDate, item.endDate)}
             memberNote = {item.memberNote}
@@ -53,7 +55,7 @@ export default function AbsenceManager() {
     return(
         <div>
             <h1>Absence Manager</h1>
-            <div className='absence-list'> {AbsenceItems} </div>
+            <div className='absence-list'> {AbsenceItems()} </div>
         </div>
     )
 
