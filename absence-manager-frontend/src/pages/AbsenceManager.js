@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getAbsences, getMembers } from '../utils/api';
-import AbsenceItem from '../components/AbsenceItem';
-import utils from '../utils/helperFunctions';
+import Pagination from '../components/Pagination';
 
 export default function AbsenceManager() {
 
@@ -31,18 +30,6 @@ export default function AbsenceManager() {
     }, []);
     
 
-    const AbsenceItems = () => absencesData.map(item => {
-        return <AbsenceItem 
-            key = {item.id}
-            name = {members[item.userId]}
-            type = {item.type}
-            period = {utils.getPeriod(item.startDate, item.endDate)}
-            memberNote = {item.memberNote}
-            status = {utils.getStatus(item.confirmedAt, item.rejectedAt)}
-            admitterNote = {item.admitterNote}
-        />
-    })
-
     if (isLoading) 
         return <div>Loading absences...</div> 
 
@@ -55,7 +42,7 @@ export default function AbsenceManager() {
     return(
         <div>
             <h1>Absence Manager</h1>
-            <div className='absence-list'> {AbsenceItems()} </div>
+            <Pagination  members={members} absences={absencesData}/>
         </div>
     )
 

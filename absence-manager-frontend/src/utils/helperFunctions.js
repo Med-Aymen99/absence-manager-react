@@ -15,9 +15,9 @@ const utils = {
                     : undefined
     },
 
-    getMemberName(userId, membersData) {
-        const member = membersData.find(item => item.userId === userId)
-        return member.name
-    }
+    // getMemberName(userId, membersData) {
+    //     const member = membersData.find(item => item.userId === userId)
+    //     return member.name
+    // }
 }
 export default utils

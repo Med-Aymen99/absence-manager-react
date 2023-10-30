@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+/* Absence list */
+.absence-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+}
+
+.absence-info {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 8px;
+  width: 250px; 
+  box-sizing: border-box;
+}
+
