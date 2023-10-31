@@ -37,15 +37,102 @@
   }
 }
 
+
+/* Filterbar stylying */
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+  font-size: 1.2em;
+  font-weight: bold;
+  
+}
+
+.filter-button {
+  cursor: pointer;
+  color: #282c34;
+  font-size: 1.1em;
+  font-weight: bold;
+  width: 100px;
+
+}
+.cancel-filter-button {
+  text-decoration: underline;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* Pagination Styling */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+  /* position: absolute;
+  top: 400px;
+  left: 0;
+  right: 0; */
+  
+}
+
+.pagination-buttons {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #282c34;
+
+}
+
+
+.absence-manager {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* Absence itm */
+
+.absence-item {
+  padding: 20px;
+  border-radius: 10px;
+  margin: 10px;
+  background-color: #f5f5f5;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+ 
+
+
+}
+.absence-item p *:first-child {
+  font-weight: bold;
+  margin: 0;
+}
+
+.absence-item p *:last-child {
+  margin: 0 0 0 10px;
+}
+.employee-name {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+
+.absence-item p {
+  margin: 5px 0;
+}
+
+
 /* Absence list */
 .absence-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 
 }
 
-.absence-info {
+.absence-item {
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 16px;
