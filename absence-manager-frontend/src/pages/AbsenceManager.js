@@ -10,7 +10,7 @@ export default function AbsenceManager() {
     const [filteredAbsences, setFilteredAbsences] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
-
+    const [currentPage, setCurrentPage] = useState(1);
 
     const sleep = ms => new Promise(r => setTimeout(r, ms));
     
@@ -41,14 +41,20 @@ export default function AbsenceManager() {
 
     if (absencesData.length === 0) 
         return <div>No absences found</div>;
-      
+    
     return(
         <div className='absence-manager'>
             <h1>Absence Manager</h1>
             <h3>Number of absences : {filteredAbsences.length} members</h3>
-            <FilterBar absencesData={absencesData} setFilteredAbsences={setFilteredAbsences} />
-            <Pagination  members={members} filteredAbsences={filteredAbsences}/>
+            <FilterBar   absencesData={absencesData} 
+                         setFilteredAbsences={setFilteredAbsences} 
+                         setCurrentPage={setCurrentPage}
+            />
+            <Pagination  members={members} 
+                         filteredAbsences={filteredAbsences} 
+                         currentPage={currentPage}
+                         setCurrentPage={setCurrentPage}
+            />
         </div>
     )
-
 }

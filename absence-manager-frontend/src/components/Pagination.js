@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import utils from '../utils/helperFunctions';
 import AbsenceItem from '../components/AbsenceItem';
 
-const Pagination = ({ filteredAbsences, members }) => {
-  const [currentPage, setCurrentPage] = useState(1);
+const Pagination = ({ filteredAbsences, members, currentPage, setCurrentPage }) => {
   //Extract constants:
   const absencesPerPage = 10;
 
@@ -13,7 +12,7 @@ const Pagination = ({ filteredAbsences, members }) => {
   const currentAbsencesData = filteredAbsences.slice(indexOfFirstAbsence, indexOfLastAbsence);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
+  console.log("current Page :", currentPage)
 
 
   const currentAbsenceItems = currentAbsencesData.map(item => {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const FilterBar = ({ absencesData, setFilteredAbsences }) => {
+const FilterBar = ({ absencesData, setFilteredAbsences, setCurrentPage }) => {
     const [typeFilter, setTypeFilter] = useState('');
     const [startDateFilter, setStartDateFilter] = useState('');
     const [endDateFilter, setEndDateFilter] = useState('');
@@ -14,8 +14,7 @@ const FilterBar = ({ absencesData, setFilteredAbsences }) => {
       if (endDateFilter) filtered = filtered.filter(absence => absence.endDate === endDateFilter);
       (endDateFilter || startDateFilter || typeFilter) && setFilterOn(true);
       setFilteredAbsences(filtered);
-      console.log(e.target)
-      
+      setCurrentPage(1);
     };
     
     const filterReset = () => {
@@ -26,8 +25,6 @@ const FilterBar = ({ absencesData, setFilteredAbsences }) => {
         setFilterOn(false);
     }
 
-    console.log("filterOn", filterOn)
-  
     return (
         <div>
             <form onSubmit={filterAbsences} className="filter-bar">
