@@ -2,8 +2,12 @@ import React from 'react';
 
 export default function AbsenceItem(props) {
 
+  const colorClass = props.status === 'Confirmed' ? 'green' 
+    : props.status === 'Rejected' ? 'red'
+    : 'yellow';
+
   return (
-    <div className="absence-item">
+    <div className={`absence-item ${colorClass}-item`}>
       <p className="employee-name">
         <span className="field-value">{props.name}</span>
       </p>

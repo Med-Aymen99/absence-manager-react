@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { getAbsences, getMembers } from '../utils/api';
 import Pagination from '../components/Pagination';
 import FilterBar from '../components/FilterBar';
+import LoadingComponent from '../components/LoadingComponent';
+import ErrorComponent from '../components/ErrorComponent';
+import EmptyStateComponent from '../components/EmptyStateComponent';
 
 export default function AbsenceManager() {
 
@@ -24,37 +27,40 @@ export default function AbsenceManager() {
                     membersData.forEach(member => members[member.userId] = member.name)
                     return members
                 });
+               // throw new Error("This is an intentional error.");
+
             })
             .catch(error => setError(error))
             .finally(async () => {
-                await sleep(2000)
+                await sleep(400)
                 setIsLoading(false);
             });
     }, []);
     
-
     if (isLoading) 
-        return <div>Loading absences...</div> 
+        return <LoadingComponent/> 
 
     if (error) 
-        return  <div>Error: {error.message}</div>
+        return <ErrorComponent message={error.message} />
 
     if (absencesData.length === 0) 
-        return <div>No absences found</div>;
+        return <EmptyStateComponent/>;
     
     return(
         <div className='absence-manager'>
-            <h1>Absence Manager</h1>
-            <h3>Number of absences : {filteredAbsences.length} members</h3>
+            <h3 className='absences-number'>Number of absences : {filteredAbsences.length} members</h3>
             <FilterBar   absencesData={absencesData} 
                          setFilteredAbsences={setFilteredAbsences} 
                          setCurrentPage={setCurrentPage}
             />
+            {filteredAbsences.length === 0 && <p>No absences with this filter </p>}
             <Pagination  members={members} 
                          filteredAbsences={filteredAbsences} 
                          currentPage={currentPage}
                          setCurrentPage={setCurrentPage}
             />
+            
+    
         </div>
     )
 }
