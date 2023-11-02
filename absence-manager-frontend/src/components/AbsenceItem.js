@@ -4,11 +4,8 @@ import {saveAs} from 'file-saver';
 
 export default function AbsenceItem(props) {
 
- 
-
   const handleDownload = () => {
     const iCalData = generateICalData(props);
-    console.log("iCalData :", iCalData);
     const blob = new Blob([iCalData], { type: 'text/calendar' });
     saveAs(blob, `${props.name}-absence.ics`);
   }

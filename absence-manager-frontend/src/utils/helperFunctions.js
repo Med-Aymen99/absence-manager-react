@@ -15,7 +15,6 @@ export const getAbsenceStatus = (confirmedAt, rejectedAt) => {
                 : rejectedAt ? "Rejected"
                 : undefined;
 };
-// Added
 export const getAbsenceTypes = (absencesData) => {
     const types = absencesData.map(absence => absence.type.toLowerCase());
     return [...new Set(types)];

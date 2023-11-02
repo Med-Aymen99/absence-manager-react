@@ -19,7 +19,6 @@ export default function AbsenceManager() {
     
     const [currentPage, setCurrentPage] = useState(1);
 
-    //Add absence type state
     const [absencesTypes, setAbsencesTypes] = useState([]);
 
     //For testing purposes
@@ -73,7 +72,6 @@ export default function AbsenceManager() {
                                    setCurrentPage={setCurrentPage}
             />
            <PaginationButtons filteredAbsences={filteredAbsences} currentPage={currentPage} setCurrentPage={setCurrentPage} />
-    
         </div>
     )
 }
