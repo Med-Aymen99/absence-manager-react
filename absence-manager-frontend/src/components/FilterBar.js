@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const FilterBar = ({ absencesData, setFilteredAbsences, setCurrentPage }) => {
+const FilterBar = ({ absencesData, setFilteredAbsences, setCurrentPage, absencesTypes}) => {
     const [typeFilter, setTypeFilter] = useState('');
     const [startDateFilter, setStartDateFilter] = useState('');
     const [endDateFilter, setEndDateFilter] = useState('');
@@ -9,7 +9,7 @@ const FilterBar = ({ absencesData, setFilteredAbsences, setCurrentPage }) => {
     const filterAbsences = (e) => {
       e.preventDefault();
       let filtered = [...absencesData];
-      if (typeFilter) filtered = filtered.filter(absence => absence.type === typeFilter);
+      if (typeFilter) filtered = filtered.filter(absence => absence.type.toLowerCase() === typeFilter);
       if (startDateFilter) filtered = filtered.filter(absence => absence.startDate === startDateFilter);
       if (endDateFilter) filtered = filtered.filter(absence => absence.endDate === endDateFilter);
       (endDateFilter || startDateFilter || typeFilter) && setFilterOn(true);
@@ -35,8 +35,11 @@ const FilterBar = ({ absencesData, setFilteredAbsences, setCurrentPage }) => {
                 placeholder="Filter by type"
             >
                 <option value="" defaultValue >All </option>
-                <option value="sickness">sickness</option>
-                <option value="vacation">vacation</option>
+                {absencesTypes.map((type, index) =>
+                    <option key={index} value={type}>
+                            {type}
+                    </option>
+                )}
             </select>
             
             <label htmlFor="startDate" >start Date : </label>

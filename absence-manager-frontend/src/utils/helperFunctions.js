@@ -1,6 +1,6 @@
 import ical from 'ical-generator';
 
-export const getPeriod = (date1, date2) => {
+export const getAbsencePeriod = (date1, date2) => {
     const firstDate = new Date(date1);
     const secondDate = new Date(date2);
     const timeDiff = Math.abs(firstDate - secondDate);
@@ -9,12 +9,17 @@ export const getPeriod = (date1, date2) => {
     return period;
 };
 
-export const getStatus = (confirmedAt, rejectedAt) => {
+export const getAbsenceStatus = (confirmedAt, rejectedAt) => {
     return !confirmedAt && !rejectedAt ? "Requested" 
                 : confirmedAt ? "Confirmed"
                 : rejectedAt ? "Rejected"
                 : undefined;
 };
+// Added
+export const getAbsenceTypes = (absencesData) => {
+    const types = absencesData.map(absence => absence.type.toLowerCase());
+    return [...new Set(types)];
+}
 
 export const generateICalData = (absence) => {
     const cal = ical();

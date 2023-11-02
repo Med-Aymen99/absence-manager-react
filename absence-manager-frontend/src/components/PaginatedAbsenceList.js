@@ -1,5 +1,5 @@
 import React from 'react';
-import {getPeriod, getStatus} from '../utils/helperFunctions';
+import {getAbsencePeriod, getAbsenceStatus} from '../utils/helperFunctions';
 import AbsenceItem from './AbsenceItem';
 import { absencesPerPage } from '../utils/constants';
 
@@ -16,9 +16,9 @@ const PaginatedAbsenceList = ({ filteredAbsences, members, currentPage }) => {
         type = {item.type}
         startDate = {item.startDate}
         endDate = {item.endDate}
-        period = {getPeriod(item.startDate, item.endDate)}
+        period = {getAbsencePeriod(item.startDate, item.endDate)}
         memberNote = {item.memberNote}
-        status = {getStatus(item.confirmedAt, item.rejectedAt)}
+        status = {getAbsenceStatus(item.confirmedAt, item.rejectedAt)}
         admitterNote = {item.admitterNote}
     />
   })
