@@ -65,7 +65,7 @@ export default function AbsenceManager() {
                          setFilteredAbsences={setFilteredAbsences} 
                          setCurrentPage={setCurrentPage}
             />
-            {filteredAbsences.length === 0 && <p>No absences with this filter </p>}
+            {filteredAbsences.length === 0 && <p>No absences foundwith this filter </p>}
             <PaginatedAbsenceList  members={members} 
                                    filteredAbsences={filteredAbsences} 
                                    currentPage={currentPage}
