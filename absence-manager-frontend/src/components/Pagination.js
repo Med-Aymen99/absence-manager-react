@@ -1,5 +1,5 @@
 import React from 'react';
-import utils from '../utils/helperFunctions';
+import {getPeriod, getStatus} from '../utils/helperFunctions';
 import AbsenceItem from '../components/AbsenceItem';
 
 const Pagination = ({ filteredAbsences, members, currentPage, setCurrentPage }) => {
@@ -20,9 +20,11 @@ const Pagination = ({ filteredAbsences, members, currentPage, setCurrentPage }) 
         key = {item.id}
         name = {members[item.userId]}
         type = {item.type}
-        period = {utils.getPeriod(item.startDate, item.endDate)}
+        startDate = {item.startDate}
+        endDate = {item.endDate}
+        period = {getPeriod(item.startDate, item.endDate)}
         memberNote = {item.memberNote}
-        status = {utils.getStatus(item.confirmedAt, item.rejectedAt)}
+        status = {getStatus(item.confirmedAt, item.rejectedAt)}
         admitterNote = {item.admitterNote}
     />
   })
@@ -45,6 +47,7 @@ const Pagination = ({ filteredAbsences, members, currentPage, setCurrentPage }) 
       <div className='absence-list' >{currentAbsenceItems} </div>
       <div className='pagination'>{pageButtons}</div>
     </div>
+    
   );
 };
 

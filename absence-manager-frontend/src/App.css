@@ -122,8 +122,8 @@
   margin: 10px;
   background-color: #f5f5f5;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
- 
-
+  display: flex;
+  flex-direction: column;
 
 }
 .absence-item p *:first-child {
@@ -222,12 +222,33 @@
 .empty-state > * {
   margin: 0;
 }
-/* .empty-state h2 {
-  color: #555;
-  margin-bottom: 5px;
+
+.download-iCal-link {
+  padding: 6px;
+  /* padding: 7px 10px; */
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #7a8b9c;
+  background-color: rgba(122, 139, 156, 0.75);
+
+
+  color: #fff; 
+  border-radius: 4px;
+  cursor: pointer; 
+  margin-top: auto;
+
 }
 
-.empty-state p {
-  color: #555;
-  margin: 0;
-} */
+.save-iCal-button {
+  padding: 6px;
+  background-color: rgba(122, 139, 156, 0.75);
+  color: #fff; 
+  border-radius: 6px;
+  cursor: pointer; 
+  margin-top: auto;
+  border: none;
+
+
+
+}

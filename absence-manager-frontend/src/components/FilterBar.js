@@ -35,7 +35,7 @@ const FilterBar = ({ absencesData, setFilteredAbsences, setCurrentPage }) => {
                     onChange={(e) => setTypeFilter(e.target.value)}
                     placeholder="Filter by type"
                 >
-                    <option value="" disabled defaultValue >Filter by type </option>
+                    <option value="" defaultValue >All </option>
                     <option value="sickness">sickness</option>
                     <option value="vacation">vacation</option>
                 </select>

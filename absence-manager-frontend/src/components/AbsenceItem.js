@@ -1,6 +1,18 @@
 import React from 'react';
+import { generateICalData } from '../utils/helperFunctions';
+import {saveAs} from 'file-saver';
 
 export default function AbsenceItem(props) {
+
+ 
+
+  const handleDownload = () => {
+    const iCalData = generateICalData(props);
+    console.log("iCalData :", iCalData);
+    const blob = new Blob([iCalData], { type: 'text/calendar' });
+    saveAs(blob, `${props.name}-absence.ics`);
+  }
+
 
   const colorClass = props.status === 'Confirmed' ? 'green' 
     : props.status === 'Rejected' ? 'red'
@@ -39,6 +51,8 @@ export default function AbsenceItem(props) {
           <span className="field-value">{props.admitterNote}</span>
         </p>
       )}
+      <button className='save-iCal-button' onClick={handleDownload}>Dwonload iCal</button>
+      
     </div>
   );
 }
