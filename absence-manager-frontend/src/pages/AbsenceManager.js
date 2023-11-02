@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { getAbsences, getMembers } from '../utils/api';
-import Pagination from '../components/Pagination';
+import PaginatedAbsenceList from '../components/PaginatedAbsenceList';
 import FilterBar from '../components/FilterBar';
 import LoadingComponent from '../components/LoadingComponent';
 import ErrorComponent from '../components/ErrorComponent';
 import EmptyStateComponent from '../components/EmptyStateComponent';
+import PaginationButtons from '../components/PagincationButtons';
 
 export default function AbsenceManager() {
 
@@ -13,6 +14,7 @@ export default function AbsenceManager() {
     const [filteredAbsences, setFilteredAbsences] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
+    
     const [currentPage, setCurrentPage] = useState(1);
 
     const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -47,19 +49,22 @@ export default function AbsenceManager() {
         return <EmptyStateComponent/>;
     
     return(
-        <div className='absence-manager'>
-            <h3 className='absences-number'>Number of absences : {filteredAbsences.length} members</h3>
+        <div className='absence-manager'>  
+            <p >
+                <strong>Number of absences : </strong>
+                {filteredAbsences.length} members
+            </p>
             <FilterBar   absencesData={absencesData} 
                          setFilteredAbsences={setFilteredAbsences} 
                          setCurrentPage={setCurrentPage}
             />
             {filteredAbsences.length === 0 && <p>No absences with this filter </p>}
-            <Pagination  members={members} 
+            <PaginatedAbsenceList  members={members} 
                          filteredAbsences={filteredAbsences} 
                          currentPage={currentPage}
                          setCurrentPage={setCurrentPage}
             />
-            
+           <PaginationButtons filteredAbsences={filteredAbsences} currentPage={currentPage} setCurrentPage={setCurrentPage} />
     
         </div>
     )

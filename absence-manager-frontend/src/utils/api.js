@@ -1,6 +1,5 @@
 import Axios from "axios"
-
-const apiBaseUrl = 'http://localhost:4000';
+import { apiBaseUrl } from "./constants"
 
 const makeGetRequest = (path) => {
     return Axios.get(apiBaseUrl+path)

@@ -26,47 +26,43 @@ const FilterBar = ({ absencesData, setFilteredAbsences, setCurrentPage }) => {
     }
 
     return (
-        <div>
-            <form onSubmit={filterAbsences} className="filter-bar">
-                <label htmlFor="type" >Absence type : </label>
-                <select 
-                    name="type"
-                    value={typeFilter}
-                    onChange={(e) => setTypeFilter(e.target.value)}
-                    placeholder="Filter by type"
-                >
-                    <option value="" defaultValue >All </option>
-                    <option value="sickness">sickness</option>
-                    <option value="vacation">vacation</option>
-                </select>
-                
-                <label htmlFor="startDate" >start Date : </label>
-                <input
-                    name="startDate"
-                    id="startDate"
-                    type="date"
-                    value={startDateFilter}
-                    onChange={(e) => setStartDateFilter(e.target.value)}
-                />
-                <label htmlFor="startDate" >End Date : </label>
-                <input
-                    name="endDate"
-                    id="endDate"
-                    type="date"
-                    value={endDateFilter}
-                    onChange={(e) => setEndDateFilter(e.target.value)}
-                />
-                <button type="submit" className="filter-button">Filter</button>
-                { filterOn && 
-                    <button className="cancel-filter-button" onClick={() => filterReset()}>
-                        cancel filter
-                    </button> 
-                }
-
-            </form>
+        <form onSubmit={filterAbsences} className="filter-bar">
+            <label htmlFor="type" >Absence type : </label>
+            <select 
+                name="type"
+                value={typeFilter}
+                onChange={(e) => setTypeFilter(e.target.value)}
+                placeholder="Filter by type"
+            >
+                <option value="" defaultValue >All </option>
+                <option value="sickness">sickness</option>
+                <option value="vacation">vacation</option>
+            </select>
             
-        </div>
-        
+            <label htmlFor="startDate" >start Date : </label>
+            <input
+                name="startDate"
+                id="startDate"
+                type="date"
+                value={startDateFilter}
+                onChange={(e) => setStartDateFilter(e.target.value)}
+            />
+            <label htmlFor="startDate" >End Date : </label>
+            <input
+                name="endDate"
+                id="endDate"
+                type="date"
+                value={endDateFilter}
+                onChange={(e) => setEndDateFilter(e.target.value)}
+            />
+            <button type="submit" className="filter-button">Filter</button>
+            { filterOn && 
+                <button className="cancel-filter-button" onClick={() => filterReset()}>
+                    cancel filter
+                </button> 
+            }
+
+        </form>
     );
   };
   
