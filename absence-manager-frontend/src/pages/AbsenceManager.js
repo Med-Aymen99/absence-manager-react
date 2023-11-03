@@ -21,6 +21,7 @@ export default function AbsenceManager() {
 
     const [absencesTypes, setAbsencesTypes] = useState([]);
 
+    //For testing purposes : to simulate a loading time
     const sleep = ms => new Promise(r => setTimeout(r, ms));
     
     useEffect(() => {
@@ -39,6 +40,7 @@ export default function AbsenceManager() {
             })
             .catch(error => setError(error))
             .finally(async () => {
+                // For testing purposes : to simulate a loading time
                 await sleep(400)
                 setIsLoading(false);
             });
@@ -59,17 +61,24 @@ export default function AbsenceManager() {
                 <strong>Number of absences : </strong>
                 {filteredAbsences.length} members
             </p>
+
             <FilterBar   absencesData={absencesData} 
                          absencesTypes={absencesTypes}
                          setFilteredAbsences={setFilteredAbsences} 
                          setCurrentPage={setCurrentPage}
             />
+
             {filteredAbsences.length === 0 && <p>No absences found with this filter </p>}
+
             <PaginatedAbsenceList  members={members} 
                                    filteredAbsences={filteredAbsences} 
                                    currentPage={currentPage}
             />
-           <PaginationButtons filteredAbsences={filteredAbsences} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+            
+            <PaginationButtons filteredAbsences={filteredAbsences} 
+                                currentPage={currentPage} 
+                                setCurrentPage={setCurrentPage} 
+            />
         </div>
     )
 }
