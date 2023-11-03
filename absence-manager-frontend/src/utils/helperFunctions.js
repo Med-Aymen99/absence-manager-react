@@ -10,11 +10,12 @@ export const getAbsencePeriod = (date1, date2) => {
 };
 
 export const getAbsenceStatus = (confirmedAt, rejectedAt) => {
-    return !confirmedAt && !rejectedAt ? "Requested" 
+    return !confirmedAt && !rejectedAt ? "Requested"
+                : confirmedAt && rejectedAt ? undefined 
                 : confirmedAt ? "Confirmed"
-                : rejectedAt ? "Rejected"
-                : undefined;
+                : "Rejected"
 };
+
 export const getAbsenceTypes = (absencesData) => {
     const types = absencesData.map(absence => absence.type.toLowerCase());
     return [...new Set(types)];

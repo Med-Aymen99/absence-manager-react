@@ -21,7 +21,6 @@ export default function AbsenceManager() {
 
     const [absencesTypes, setAbsencesTypes] = useState([]);
 
-    //For testing purposes
     const sleep = ms => new Promise(r => setTimeout(r, ms));
     
     useEffect(() => {
@@ -65,11 +64,10 @@ export default function AbsenceManager() {
                          setFilteredAbsences={setFilteredAbsences} 
                          setCurrentPage={setCurrentPage}
             />
-            {filteredAbsences.length === 0 && <p>No absences foundwith this filter </p>}
+            {filteredAbsences.length === 0 && <p>No absences found with this filter </p>}
             <PaginatedAbsenceList  members={members} 
                                    filteredAbsences={filteredAbsences} 
                                    currentPage={currentPage}
-                                   setCurrentPage={setCurrentPage}
             />
            <PaginationButtons filteredAbsences={filteredAbsences} currentPage={currentPage} setCurrentPage={setCurrentPage} />
         </div>
