@@ -1,4 +1,4 @@
-import {getAbsencePeriod, getAbsenceStatus, getAbsenceTypes} from "./helperFunctions"
+import {generateICalData, getAbsencePeriod, getAbsenceStatus, getAbsenceTypes} from "./helperFunctions"
 
 // Testing getAbsencePeriod function
 describe('Absence Period Calculation', () => {
@@ -52,3 +52,21 @@ describe('Absence types generation', () => {
         expect(getAbsenceTypes(absences)).toEqual(["sickness", "vacation", "sick leave"]);
     });
 });
+
+// Testing generateICalData function
+describe('iCal Data generation', () => {
+    test('Should contain correct data', () => {
+        const absence = 
+            {
+                name: 'John',
+                type: 'Vacation',
+                startDate: '2023-01-01',
+                endDate: '2023-01-03',
+            }
+        const iCalData = generateICalData(absence)
+        expect(iCalData).toContain("John");
+        expect(iCalData).toContain("Vacation");
+        expect(iCalData).toContain("DTSTART:20230101T000000Z");
+        expect(iCalData).toContain("DTEND:20230103T000000Z");
+    })
+})
