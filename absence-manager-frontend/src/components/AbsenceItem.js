@@ -30,10 +30,10 @@ export default function AbsenceItem(props) {
           {props.period} {props.period > 1 ? "days" : "day"}
         </span>
       </p>
-      {props.note && (
+      {props.memberNote && (
         <p className="absence-note">
           <span className="field-title">Note:</span>
-          <span className="field-value">{props.note}</span>
+          <span className="field-value">{props.memberNote}</span>
         </p>
       )}
       {props.status && (

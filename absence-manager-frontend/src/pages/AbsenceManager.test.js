@@ -136,6 +136,10 @@ describe('AbsenceManager', () => {
     // Check if absence status are rendered and correctly generated
     expect(screen.getByText('Rejected')).toBeInTheDocument();
     expect(screen.getByText('Confirmed')).toBeInTheDocument();
+
+    // Check if member notes are rendered 
+    expect(screen.getByText('One week')).toBeInTheDocument();
+    expect(screen.getByText('A whole day')).toBeInTheDocument();
     
   });
 });
