@@ -1,5 +1,5 @@
-import Axios from "axios"
-import { apiBaseUrl } from "./constants"
+import { apiBaseUrl } from './constants';
+import Axios from 'axios';
 
 const makeGetRequest = (path) => {
     return Axios.get(apiBaseUrl+path)

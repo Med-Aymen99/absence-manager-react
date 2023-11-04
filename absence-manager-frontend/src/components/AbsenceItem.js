@@ -16,7 +16,7 @@ export default function AbsenceItem(props) {
     : 'yellow';
 
   return (
-    <div className={`absence-item ${colorClass}-item`}>
+    <div className={`absence-item ${colorClass}-item`} data-testid="absenceItem">
       <p className="employee-name">
         <span className="field-value">{props.name}</span>
       </p>
