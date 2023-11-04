@@ -1,11 +1,11 @@
 import React from 'react';
 import { absencesPerPage } from '../utils/constants';
 
-const PaginationButtons = ({ filteredAbsences, currentPage, setCurrentPage }) => {
+const PaginationButtons = ({ filteredAbsencesLength, currentPage, setCurrentPage }) => {
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-    const numberOfPages = Math.ceil(filteredAbsences.length / absencesPerPage);    
+    const numberOfPages = Math.ceil(filteredAbsencesLength / absencesPerPage);    
 
     const pageButtons = [];
 

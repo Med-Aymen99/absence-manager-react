@@ -75,7 +75,7 @@ export default function AbsenceManager() {
                                    currentPage={currentPage}
             />
             
-            <PaginationButtons filteredAbsences={filteredAbsences} 
+            <PaginationButtons filteredAbsencesLength={filteredAbsences.length} 
                                 currentPage={currentPage} 
                                 setCurrentPage={setCurrentPage} 
             />

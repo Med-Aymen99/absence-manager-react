@@ -5,7 +5,7 @@ import PaginatedAbsenceList from '../components/PaginatedAbsenceList';
 const absences = [
     {
         admitterId: null,
-        id: 26346,
+        id: 1,
         createdAt: "2023-01-01T13:19:37.000+01:00",
         crewId: 352,
         type: 'vacation leave',
@@ -21,6 +21,7 @@ const absences = [
     {
         admitterId: null,
         createdAt: "2023-02-12T13:19:45.000+01:00",
+        id: 2,
         crewId: 3955,
         type: 'sickness',
         startDate: '2023-02-12',
