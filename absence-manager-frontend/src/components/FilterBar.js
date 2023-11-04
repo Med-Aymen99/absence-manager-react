@@ -50,7 +50,7 @@ const FilterBar = ({ absencesData, setFilteredAbsences, setCurrentPage, absences
                 value={startDateFilter}
                 onChange={(e) => setStartDateFilter(e.target.value)}
             />
-            <label htmlFor="startDate" >End Date : </label>
+            <label htmlFor="endDate" >End Date : </label>
             <input
                 name="endDate"
                 id="endDate"
