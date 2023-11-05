@@ -4,6 +4,8 @@ const FilterBar = ({ absencesData, setFilteredAbsences, setCurrentPage, absences
     const [typeFilter, setTypeFilter] = useState('');
     const [startDateFilter, setStartDateFilter] = useState('');
     const [endDateFilter, setEndDateFilter] = useState('');
+
+    // filterOn : is used to show the cancel filter button when a filter is applied
     const [filterOn, setFilterOn] = useState(false);
 
     const filterAbsences = (e) => {
@@ -12,7 +14,10 @@ const FilterBar = ({ absencesData, setFilteredAbsences, setCurrentPage, absences
       if (typeFilter) filtered = filtered.filter(absence => absence.type.toLowerCase() === typeFilter);
       if (startDateFilter) filtered = filtered.filter(absence => absence.startDate === startDateFilter);
       if (endDateFilter) filtered = filtered.filter(absence => absence.endDate === endDateFilter);
+      
+      // The following line is used to show the cancel filter button when a filter is applied
       (endDateFilter || startDateFilter || typeFilter) && setFilterOn(true);
+      
       setFilteredAbsences(filtered);
       setCurrentPage(1);
     };

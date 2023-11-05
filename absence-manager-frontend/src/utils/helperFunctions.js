@@ -16,6 +16,7 @@ export const getAbsenceStatus = (confirmedAt, rejectedAt) => {
                 : "Rejected"
 };
 
+// This function is used to get the absence types for the filter bar select options
 export const getAbsenceTypes = (absencesData) => {
     const types = absencesData.map(absence => absence.type.toLowerCase());
     return [...new Set(types)];

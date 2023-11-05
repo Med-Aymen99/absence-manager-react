@@ -18,7 +18,10 @@ export default function AbsenceManager() {
     const [error, setError] = useState(null);
     
     const [currentPage, setCurrentPage] = useState(1);
-
+    /*
+    AbsencesTypes state is used to populate the select input in the filter bar 
+    with all the types of absences available in the data 
+    */
     const [absencesTypes, setAbsencesTypes] = useState([]);
 
     //For testing purposes : to simulate a loading time

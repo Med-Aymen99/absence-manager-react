@@ -10,7 +10,7 @@ export default function AbsenceItem(props) {
     saveAs(blob, `${props.name}-absence.ics`);
   }
 
-
+  // Class name to change the background color of the item based on the status
   const colorClass = props.status === 'Confirmed' ? 'green' 
     : props.status === 'Rejected' ? 'red'
     : 'yellow';
