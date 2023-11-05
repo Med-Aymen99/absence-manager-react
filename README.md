@@ -1,3 +1,17 @@
+## Challenge Website
+[Absence-manager-by-aymen](https://absence-manager-by-aymen.azurewebsites.net/)
+
+## Functionalities
+- **List Absences :** 🗓️ View absence records.
+- **Color Indicators :** 🎨 Visual status cues (🔴:Rejected, 🟢:Confirmed, 🟠:Requested).
+- **Filter Absences :** 🔍 Filter by type, start date, and end date.
+- **Export to iCal :** 📅 Download absence records in iCal format.
+- **Cancel Filters :** 🔄 Revert applied filters by clicking the "Cancel" button
+- **Pagination :** 📄 Navigate through records seamlessly.
+
+To get started, follow the installation instructions below and then open the app in your web browser.
+
+
 ## Getting Started
 
 1. Clone this repository to your local machine:
@@ -23,15 +37,6 @@ cd absence-manager-frontend && npm start
 ```
 
 6. Access the application in your web browser at [http://localhost:3000](http://localhost:3000).
-
-
-## Functionalities
-- **List Absences :** 🗓️ View absence records.
-- **Color Indicators :** 🎨 Visual status cues (🔴:Rejected, 🟢:Confirmed, 🟠:Requested).
-- **Filter Absences :** 🔍 Filter by type, start date, and end date.
-- **Export to iCal :** 📅 Download absence records in iCal format.
-- **Cancel Filters :** 🔄 Revert applied filters.
-- **Pagination :** 📄 Navigate through records seamlessly.
 
 
 ## Technologies Used
