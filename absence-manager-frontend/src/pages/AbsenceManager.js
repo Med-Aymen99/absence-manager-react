@@ -32,11 +32,12 @@ export default function AbsenceManager() {
             .then(([absencesData, membersData]) => {
                 setAbsencesData(absencesData);
                 setFilteredAbsences(absencesData);
-                setMembers(oldMembers => {
-                    const members = {}
-                    membersData.forEach(member => members[member.userId] = member.name)
-                    return members
-                });
+                membersData &&
+                    setMembers(oldMembers => {
+                        const members = {}
+                        membersData.forEach(member => members[member.userId] = member.name)
+                        return members
+                    });
                 setAbsencesTypes(getAbsenceTypes(absencesData));
                // throw new Error("This is an intentional error.");
 
